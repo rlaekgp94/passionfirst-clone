@@ -162,8 +162,17 @@ $(".select_lang > a").click(function() {
 </script>
 
 <style>
+/* Noto */
+@font-face {
+  font-family: "Noto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../assets/font/NotoSansKR-Medium.otf");
+}
+
 body {
   background-color: dimgrey;
+  font-family: "Noto";
 }
 
 /*z-index 아직 미설정*/
