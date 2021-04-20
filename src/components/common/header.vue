@@ -169,9 +169,10 @@ export default {
         headerHoverText.css("color", "#fff");
         langBtn.removeClass("invert").css("color", "#fff");
 
-        //===========scroll을 내려서 nav li를 hover하고 마우스가 떼졋을때 header background도 없어짐
-        //===========그래서 scroll이벤트 안에 hover이벤트를 넣어봤지만 sscroll height가 0일때엔
-        //===========nav li hover를 하면 background가 안없어진다 수정해야함
+        //===========위 코드만 할시엔 scroll을 내려서 nav li를 hover하고 마우스가 떼졋을때
+        //===========header background도 없어짐 그래서 scroll이벤트 안에 hover이벤트를
+        //===========넣어봤지만 sscroll height가 0일때엔nav li hover를 하면 background가 안없어진다
+        //===========아래코드는 수정해야함
         gnb.hover(
           function() {
             headerHoverItem.addClass("sub_on");
