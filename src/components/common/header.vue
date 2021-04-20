@@ -93,74 +93,86 @@
     <!--nav_wrap-->
   </header>
 </template>
+
 <script>
+import $ from "jquery";
 export default {
-  name: "Header"
+  name: "Header",
+  mounted() {
+    let gnb = $(".gnb_category li"),
+      gnbSub = $(".gnb_sub"),
+      gnbSubsub = $(".gnb_sub li"),
+      gnbSubBg = $(".gnb_sub_bg"),
+      headerHoverItem = $(
+        "#header_wrap,#logo a,#logo_befor,.gnb_Saw,.gnb_Saw i,.gnb_search"
+      ),
+      headerHoverText = $("header a").not(".gnb_sub li a,.lang_list li a"),
+      langBtn = $(".select_lang > a"),
+      langList = $(".lang_list");
+
+    //nav li hover시 하위메뉴 show
+    gnbSub.hide();
+    gnb.hover(
+      function() {
+        $(this)
+          .children("ul")
+          .show();
+        gnbSubBg.addClass("sub_on");
+        headerHoverItem.addClass("sub_on");
+        headerHoverText.css("color", "#000");
+      },
+      function() {
+        $(this)
+          .children("ul")
+          .hide();
+        gnbSubBg.removeClass("sub_on");
+        headerHoverItem.removeClass("sub_on");
+        headerHoverText.css("color", "#fff");
+      }
+    );
+
+    //하위메뉴 li hover시 hover된 li제외 textcolor 변경
+    gnbSubsub.hover(
+      function() {
+        gnbSubsub.not($(this)).addClass("on");
+      },
+      function() {
+        gnbSubsub.not($(this)).removeClass("on");
+      }
+    );
+
+    //KOR select click시 하위리스트 fadeIn
+    //메인배너,서브페이지 높이에 따라 scroll값 주기
+    langList.hide();
+
+    langBtn.click(function() {
+      $(this).addClass("active");
+      langList.fadeIn(function() {
+        $(this).mouseleave(function() {
+          $(this).hide();
+          langBtn.removeClass("active");
+        });
+      });
+    });
+
+    //scroll시 heaeer text,logo color 변경
+    $(window).scroll(function() {
+      let height = $(document).scrollTop();
+      if (height > 0) {
+        headerHoverItem.addClass("sub_on");
+        headerHoverText.css("color", "#000");
+        langBtn.addClass("invert");
+      } else if (height == 0) {
+        headerHoverItem.removeClass("sub_on");
+        headerHoverText.css("color", "#fff");
+        langBtn.removeClass("invert");
+      }
+    });
+  }
 };
 </script>
+
 <style src="../../assets/css/reset.css"></style>
-<script src="../../assets/js/jquery-1.12.4.min.js"></script>
-<script>
-let gnb = $(".gnb_category li"),
-  gnbSub = $(".gnb_sub"),
-  gnbSubBg = $(".gnb_sub_bg");
-
-//전체적으로 정리가 필요함
-
-gnbSub.hide();
-gnb.hover(
-  function() {
-    $(this)
-      .children("ul")
-      .show();
-    gnbSubBg.addClass("sub_on");
-    $(
-      "#header_wrap,#logo a,#logo_befor,.gnb_Saw,.gnb_Saw i,.gnb_search"
-    ).addClass("sub_on"); //정리필요함 Array객체로 해야할지 모르겠음 물어보기
-    $("header a")
-      .not(".gnb_sub li a,.lang_list li a")
-      .css("color", "#000");
-  },
-  function() {
-    $(this)
-      .children("ul")
-      .hide();
-    gnbSubBg.removeClass("sub_on");
-    $(
-      "#header_wrap,#logo a,#logo_befor,.gnb_Saw,.gnb_Saw i,.gnb_search"
-    ).removeClass("sub_on");
-    $("header a")
-      .not(".gnb_sub li a,.lang_list li a")
-      .css("color", "#fff");
-  }
-);
-
-$(".gnb_sub li").hover(
-  function() {
-    $(".gnb_sub li")
-      .not($(this))
-      .addClass("on");
-  },
-  function() {
-    $(".gnb_sub li")
-      .not($(this))
-      .removeClass("on");
-  }
-);
-
-$(".lang_list").hide();
-
-$(".select_lang > a").click(function() {
-  $(this).addClass("active");
-  $(".lang_list").fadeIn(function() {
-    $(this).mouseleave(function() {
-      $(this).hide();
-      $(".select_lang > a").removeClass("active");
-    });
-  });
-});
-</script>
-
 <style>
 /* Noto */
 @font-face {
@@ -282,7 +294,7 @@ nav .gnb_category > li > a::before {
   background-color: #000;
   height: 3px;
   width: 0;
-  bottom: 4px;
+  bottom: 3px;
   transition: 0.5s all;
   left: 50%;
   transform: translateX(-50%);
