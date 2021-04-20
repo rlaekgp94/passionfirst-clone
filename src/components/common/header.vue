@@ -73,7 +73,7 @@
           <a href="#" class="gnb_right_link">대리점 웹 주문</a>
 
           <div class="select_lang">
-            <a href="#">KOR</a>
+            <div class="lang_btn">KOR</div>
             <ul class="lang_list">
               <li><a href="http://eng.samhwa.com/" target="_blank">ENG</a></li>
               <li><a href="http://cha.samhwa.com/" target="_blank">CHN</a></li>
@@ -107,7 +107,7 @@ export default {
         "#header_wrap,#logo a,#logo_befor,.gnb_Saw,.gnb_Saw i,.gnb_search"
       ),
       headerHoverText = $("header a").not(".gnb_sub li a,.lang_list li a"),
-      langBtn = $(".select_lang > a"),
+      langBtn = $(".lang_btn"),
       langList = $(".lang_list");
 
     //nav li hover시 하위메뉴 show
@@ -120,6 +120,7 @@ export default {
         gnbSubBg.addClass("sub_on");
         headerHoverItem.addClass("sub_on");
         headerHoverText.css("color", "#000");
+        langBtn.addClass("invert").css("color", "#000");
       },
       function() {
         $(this)
@@ -128,6 +129,7 @@ export default {
         gnbSubBg.removeClass("sub_on");
         headerHoverItem.removeClass("sub_on");
         headerHoverText.css("color", "#fff");
+        langBtn.removeClass("invert").css("color", "#fff");
       }
     );
 
@@ -161,11 +163,23 @@ export default {
       if (height > 0) {
         headerHoverItem.addClass("sub_on");
         headerHoverText.css("color", "#000");
-        langBtn.addClass("invert");
+        langBtn.addClass("invert").css("color", "#000");
       } else if (height == 0) {
         headerHoverItem.removeClass("sub_on");
         headerHoverText.css("color", "#fff");
-        langBtn.removeClass("invert");
+        langBtn.removeClass("invert").css("color", "#fff");
+        gnb.hover(
+          function() {
+            headerHoverItem.addClass("sub_on");
+            headerHoverText.css("color", "#000");
+            langBtn.addClass("invert").css("color", "#000");
+          },
+          function() {
+            headerHoverItem.addClass("sub_on");
+            headerHoverText.css("color", "#000");
+            langBtn.addClass("invert").css("color", "#000");
+          }
+        );
       }
     });
   }
@@ -192,6 +206,9 @@ header {
   width: 100%;
   height: 95px;
   background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #header_wrap.sub_on {
@@ -294,7 +311,7 @@ nav .gnb_category > li > a::before {
   background-color: #000;
   height: 3px;
   width: 0;
-  bottom: 3px;
+  bottom: -2px;
   transition: 0.5s all;
   left: 50%;
   transform: translateX(-50%);
@@ -396,12 +413,13 @@ nav .gnb_category > li:nth-child(6) > ul {
   position: relative;
 }
 
-.select_lang > a {
+.select_lang > .lang_btn {
   color: #fff;
   font-size: 14px;
+  cursor: pointer;
 }
 
-.select_lang > a::after {
+.select_lang > .lang_btn::after {
   background: url(../../assets/img/common/dropdown.svg) no-repeat;
   content: "";
   width: 12px;
@@ -412,15 +430,19 @@ nav .gnb_category > li:nth-child(6) > ul {
   transform: translateY(-50%);
 }
 
-.select_lang > a.active::after {
+.select_lang > .lang_btn.active::after {
   transform: rotate(180deg);
   top: 2px;
+}
+
+.select_lang > .lang_btn.invert::after {
+  filter: invert(100%);
 }
 
 .lang_list {
   width: 142px;
   height: 103px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 1);
   border: 1px solid #000;
   display: flex;
   flex-direction: column;
@@ -439,7 +461,7 @@ nav .gnb_category > li:nth-child(6) > ul {
 }
 
 .lang_list li:hover {
-  background: rgba(178, 178, 178, 0.5);
+  background: rgba(219, 219, 219, 0.5);
 }
 
 .lang_list li a {

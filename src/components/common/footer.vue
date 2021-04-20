@@ -41,7 +41,7 @@
         <!--info_cscenter-->
 
         <div class="info_sitelist">
-          <a href="#">Family Site</a>
+          <div class="info_btn">Family Site</div>
           <ul class="family_list">
             <li>
               <a href="https://homentones.com/main/index.do" target="_blank"
@@ -80,7 +80,7 @@
       <!--footer_content-->
 
       <div class="footer_copyright">
-        ⓒ 2020 Samhwa Paint Industrial Co., Ltd. All Rights Reserved.
+        &#169; 2020 Samhwa Paint Industrial Co., Ltd. All Rights Reserved.
       </div>
       <!--footer_content-->
     </div>
@@ -114,17 +114,26 @@ export default {
 
 <style src="../../assets/css/reset.css"></style>
 <style>
-/*font경로 다시 지정하기*/
 @font-face {
   font-family: "Graphie";
   src: url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.eot");
+  src: url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.svg#Graphie")
+      format("svg");
 }
 
 footer {
   width: 100%;
   height: 280px;
   background: #fafafa;
-  font-family: "Graphie", "Noto", sans-serif;
+  font-family: "Graphie", "Noto", "Malgun Gothic", sans-serif;
 }
 
 #footer_wrap {
@@ -149,7 +158,7 @@ footer {
   font-size: 12px;
   line-height: 20.4px;
   letter-spacing: -0.5px;
-  font-weight: 300;
+  font-weight: lighter;
 }
 
 .info_content dl dt {
@@ -221,7 +230,7 @@ footer {
 
 .info_cscenter p {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   height: 36px;
   line-height: 36px;
   letter-spacing: 1.5px;
@@ -231,7 +240,7 @@ footer {
   position: relative;
 }
 
-.info_sitelist > a {
+.info_btn {
   color: #000;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 0 0;
   font-size: 14px;
@@ -243,9 +252,10 @@ footer {
   position: absolute;
   top: 0;
   right: 0;
+  cursor: pointer;
 }
 
-.info_sitelist > a::after {
+.info_btn::after {
   background: url(../../assets/img/common/dropdown.svg) no-repeat;
   filter: invert(100%);
   content: "";
@@ -257,7 +267,7 @@ footer {
   transform: translateY(-50%);
 }
 
-.info_sitelist > a.active::after {
+.info_btn.active::after {
   transform: rotate(180deg);
   top: 2px;
 }
@@ -284,7 +294,7 @@ footer {
 }
 
 .family_list li:hover {
-  background: rgba(178, 178, 178, 0.5);
+  background: rgba(219, 219, 219, 0.5);
 }
 
 .family_list li a {
