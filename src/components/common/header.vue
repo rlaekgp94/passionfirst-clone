@@ -168,6 +168,9 @@ export default {
         headerHoverItem.removeClass("sub_on");
         headerHoverText.css("color", "#fff");
         langBtn.removeClass("invert").css("color", "#fff");
+        //===========scroll을 내려서 nav li를 hover하고 마우스가 떼졋을때 header background도 없어짐
+        //===========그래서 scroll이벤트 안에 hover이벤트를 넣어봤지만 sscroll height가 0일때엔
+        //===========nav li hover를 하면 background가 안없어진다 수정해야함
         gnb.hover(
           function() {
             headerHoverItem.addClass("sub_on");
@@ -180,6 +183,8 @@ export default {
             langBtn.addClass("invert").css("color", "#000");
           }
         );
+        //===========
+        //===========
       }
     });
   }
@@ -196,11 +201,6 @@ export default {
   src: url("../../assets/font/NotoSansKR-Medium.otf");
 }
 
-body {
-  background-color: dimgrey;
-  font-family: "Noto";
-}
-
 /*z-index 아직 미설정*/
 header {
   width: 100%;
@@ -209,6 +209,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  font-family: "Noto", sans-serif;
 }
 
 #header_wrap.sub_on {
@@ -282,7 +283,7 @@ header {
 
 /*nav*/
 nav {
-  width: 1550px;
+  width: 1590px;
   height: 100%;
   display: flex;
 }
@@ -300,9 +301,12 @@ nav .gnb_category > li {
 nav .gnb_category > li > a {
   color: #fff;
   font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
   margin: 0 48px;
-  padding: 36px 0;
+  padding: 38px 0;
   position: relative;
+  font-family: "graphie", sans-serif;
 }
 
 nav .gnb_category > li > a::before {
@@ -356,11 +360,6 @@ nav .gnb_sub li {
 }
 
 /*sub_menu position*/
-nav .gnb_category > li:nth-child(3) > ul {
-  position: absolute;
-  top: 93px;
-  left: 180px;
-}
 
 nav .gnb_category > li:nth-child(4) > ul {
   position: absolute;
@@ -384,7 +383,6 @@ nav .gnb_category > li:nth-child(6) > ul {
   color: #000;
   font-size: 18px;
   letter-spacing: -0.7px;
-  font-weight: bold;
   transition: 0.3s ease-in-out all;
 }
 
