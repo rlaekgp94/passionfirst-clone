@@ -110,28 +110,59 @@ export default {
       langBtn = $(".lang_btn"),
       langList = $(".lang_list");
 
-    //nav li hover시 하위메뉴 show
+    //하위메뉴 숨기기
     gnbSub.hide();
-    gnb.hover(
-      function() {
-        $(this)
-          .children("ul")
-          .show();
-        gnbSubBg.addClass("sub_on");
-        headerHoverItem.addClass("sub_on");
-        headerHoverText.css("color", "#000");
-        langBtn.addClass("invert").css("color", "#000");
-      },
-      function() {
-        $(this)
-          .children("ul")
-          .hide();
-        gnbSubBg.removeClass("sub_on");
+
+    //scroll,hover event
+    $(window).scroll(function() {
+      var scroll = $(window).scrollTop();
+      if (scroll == 0) {
         headerHoverItem.removeClass("sub_on");
         headerHoverText.css("color", "#fff");
         langBtn.removeClass("invert").css("color", "#fff");
+        gnb.hover(
+          function() {
+            $(this)
+              .children("ul")
+              .show();
+            gnbSubBg.addClass("sub_on");
+            headerHoverItem.addClass("sub_on");
+            headerHoverText.css("color", "#000");
+            langBtn.addClass("invert").css("color", "#000");
+          },
+          function() {
+            $(this)
+              .children("ul")
+              .hide();
+            gnbSubBg.removeClass("sub_on");
+            headerHoverItem.removeClass("sub_on");
+            headerHoverText.css("color", "#fff");
+            langBtn.removeClass("invert").css("color", "#fff");
+          }
+        );
+      } else {
+        headerHoverItem.addClass("sub_on");
+        headerHoverText.css("color", "#000");
+        langBtn.addClass("invert").css("color", "#000");
+        gnb.hover(
+          function() {
+            $(this)
+              .children("ul")
+              .show();
+            gnbSubBg.addClass("sub_on");
+          },
+          function() {
+            $(this)
+              .children("ul")
+              .hide();
+            gnbSubBg.removeClass("sub_on");
+            headerHoverItem.addClass("sub_on");
+            headerHoverText.css("color", "#000");
+            langBtn.addClass("invert").css("color", "#000");
+          }
+        );
       }
-    );
+    });
 
     //하위메뉴 li hover시 hover된 li제외 textcolor 변경
     gnbSubsub.hover(
@@ -144,7 +175,6 @@ export default {
     );
 
     //KOR select click시 하위리스트 fadeIn
-    //메인배너,서브페이지 높이에 따라 scroll값 주기
     langList.hide();
 
     langBtn.click(function() {
@@ -155,39 +185,6 @@ export default {
           langBtn.removeClass("active");
         });
       });
-    });
-
-    //scroll시 heaeer text,logo color 변경
-    $(window).scroll(function() {
-      let height = $(document).scrollTop();
-      if (height > 0) {
-        headerHoverItem.addClass("sub_on");
-        headerHoverText.css("color", "#000");
-        langBtn.addClass("invert").css("color", "#000");
-      } else if (height == 0) {
-        headerHoverItem.removeClass("sub_on");
-        headerHoverText.css("color", "#fff");
-        langBtn.removeClass("invert").css("color", "#fff");
-
-        //===========위 코드만 할시엔 scroll을 내려서 nav li를 hover하고 마우스가 떼졋을때
-        //===========header background도 없어짐 그래서 scroll이벤트 안에 hover이벤트를
-        //===========넣어봤지만 sscroll height가 0일때엔nav li hover를 하면 background가 안없어진다
-        //===========아래코드는 수정해야함
-        gnb.hover(
-          function() {
-            headerHoverItem.addClass("sub_on");
-            headerHoverText.css("color", "#000");
-            langBtn.addClass("invert").css("color", "#000");
-          },
-          function() {
-            headerHoverItem.addClass("sub_on");
-            headerHoverText.css("color", "#000");
-            langBtn.addClass("invert").css("color", "#000");
-          }
-        );
-        //=============================================================//
-        //=============================================================//
-      }
     });
   }
 };
