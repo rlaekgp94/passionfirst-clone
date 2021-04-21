@@ -66,7 +66,7 @@
             </ul>
           </li>
         </ul>
-        <!--gnb_category-->
+        <!-- gnb_category -->
 
         <div class="gnb_right">
           <a href="#" class="gnb_right_link">인재채용</a>
@@ -86,11 +86,11 @@
 
           <button type="button" class="gnb_search">검색</button>
         </div>
-        <!--gnb_right-->
+        <!-- gnb_right -->
       </nav>
-      <!--nav-->
+      <!-- nav -->
     </div>
-    <!--nav_wrap-->
+    <!-- nav_wrap -->
   </header>
 </template>
 
@@ -209,6 +209,7 @@ header {
   top: 0;
   left: 0;
   font-family: "Noto", sans-serif;
+  z-index: 10;
 }
 
 #header_wrap.sub_on {
@@ -249,7 +250,7 @@ header {
   width: 90px;
   height: 32px;
   display: block;
-  background: url(../../assets/img/common/logo-samhwa-white.svg) no-repeat;
+  background: url(../../assets/img/logo/logo-white.svg) no-repeat;
   font-size: 0;
   position: absolute;
   left: 70px;
@@ -261,13 +262,13 @@ header {
 #logo a.sub_on {
   width: 90px;
   height: 32px;
-  background: url(../../assets/img/common/logo-samhwa-red.svg) no-repeat;
+  background: url(../../assets/img/logo/logo-color.svg) no-repeat;
 }
 
 #logo_befor {
   width: 72px;
   height: 72px;
-  background: url(../../assets/img/common/logo-samhwa-white-befor.svg) no-repeat;
+  background: url(../../assets/img/logo/logo-white-befor.svg) no-repeat;
   font-size: 0;
   position: absolute;
   left: 160px;
@@ -277,7 +278,7 @@ header {
 }
 
 #logo_befor.sub_on {
-  background: url(../../assets/img/common/logo-samhwa-red-befor.svg) no-repeat;
+  background: url(../../assets/img/logo/logo-color-befor.svg) no-repeat;
 }
 
 /*nav*/
@@ -295,6 +296,7 @@ nav .gnb_category {
 nav .gnb_category > li {
   padding: 36px 0;
   cursor: pointer;
+  line-height: 19px;
 }
 
 nav .gnb_category > li > a {
@@ -303,7 +305,6 @@ nav .gnb_category > li > a {
   font-weight: bold;
   letter-spacing: 0.5px;
   margin: 0 48px;
-  padding: 38px 0;
   position: relative;
   font-family: "graphie", sans-serif;
 }
@@ -314,7 +315,7 @@ nav .gnb_category > li > a::before {
   background-color: #000;
   height: 3px;
   width: 0;
-  bottom: -2px;
+  bottom: -41px;
   transition: 0.5s all;
   left: 50%;
   transform: translateX(-50%);
@@ -331,7 +332,6 @@ nav .gnb_sub {
   top: 93px;
   left: 46px;
   width: 100%;
-  transition: 0.3s ease-in-out all;
   animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -391,7 +391,7 @@ nav .gnb_category > li:nth-child(6) > ul {
 
 /*gnb_right*/
 .gnb_right {
-  width: 450px;
+  width: 485px;
   position: absolute;
   right: 70px;
   top: 50%;
@@ -417,7 +417,7 @@ nav .gnb_category > li:nth-child(6) > ul {
 }
 
 .select_lang > .lang_btn::after {
-  background: url(../../assets/img/common/dropdown.svg) no-repeat;
+  background: url(../../assets/img/icon/icon-dropdown.svg) no-repeat;
   content: "";
   width: 12px;
   height: 12px;
@@ -445,8 +445,8 @@ nav .gnb_category > li:nth-child(6) > ul {
   flex-direction: column;
   position: absolute;
   top: 33px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 45%;
+  transform: translateX(-45%);
 }
 
 .lang_list li {
@@ -476,7 +476,7 @@ nav .gnb_category > li:nth-child(6) > ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 50px;
+  margin-left: 60px;
 }
 
 .gnb_Saw i {
@@ -498,7 +498,7 @@ nav .gnb_category > li:nth-child(6) > ul {
   outline: none;
   border: none;
   font-size: 0;
-  background: url(../../assets/img/common/search-white.svg) no-repeat;
+  background: url(../../assets/img/icon/icon-search-white.svg) no-repeat;
   width: 36px;
   height: 36px;
   cursor: pointer;

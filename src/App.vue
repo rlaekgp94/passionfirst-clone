@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header />
+    <TheColor />
     <Footer />
     <ScrollBar />
   </div>
@@ -8,22 +9,24 @@
 <style>
 /*미리보기용 css*/
 #app {
-  height: 200vh;
+  /* height: 200vh;
   background: linear-gradient(
     rgba(83, 128, 196, 0.856),
     rgba(181, 161, 255, 0.39)
   );
-  position: relative;
+  position: relative; */
 }
 
 footer {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
-  left: 0;
+  left: 0; */
+  padding-top: 280px;
 }
 </style>
 <script>
 import Header from "./components/common/header.vue";
+import TheColor from "./layout/TheColor.vue";
 import Footer from "./components/common/footer.vue";
 import ScrollBar from "./components/common/scrollbar.vue";
 
@@ -31,6 +34,7 @@ export default {
   name: "app",
   components: {
     Header,
+    TheColor,
     Footer,
     ScrollBar
   }

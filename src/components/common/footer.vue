@@ -23,7 +23,7 @@
               >blog</a
             >
           </div>
-          <!--footer_sns-->
+          <!-- footer_sns -->
 
           <dl>
             <dt>삼화페인트공업(주)</dt>
@@ -32,13 +32,13 @@
             <dd>안산공장: 경기도 안산시 단원구 별망로 178 (성곡동)</dd>
           </dl>
         </div>
-        <!--info_content-->
+        <!-- info_content -->
 
         <div class="info_cscenter">
           <span>Technical Service Center</span>
           <p>1544-5357</p>
         </div>
-        <!--info_cscenter-->
+        <!-- info_cscenter -->
 
         <div class="info_sitelist">
           <div class="info_btn">Family Site</div>
@@ -75,16 +75,16 @@
             </li>
           </ul>
         </div>
-        <!--info_sitelist-->
+        <!-- info_sitelist -->
       </div>
-      <!--footer_content-->
+      <!-- footer_content -->
 
       <div class="footer_copyright">
         &#169; 2020 Samhwa Paint Industrial Co., Ltd. All Rights Reserved.
       </div>
-      <!--footer_content-->
+      <!-- footer_content -->
     </div>
-    <!--footer_wrap-->
+    <!-- footer_wrap -->
   </footer>
 </template>
 
@@ -193,7 +193,7 @@ footer {
 
 .icon_inst {
   font-size: 0;
-  background: url(../../assets/img/common/ic-insta.svg) no-repeat;
+  background: url(../../assets/img/icon/icon-insta.svg) no-repeat;
   width: 24px;
   height: 24px;
   display: block;
@@ -201,7 +201,7 @@ footer {
 
 .icon_yout {
   font-size: 0;
-  background: url(../../assets/img/common/ic-youtube.svg) no-repeat;
+  background: url(../../assets/img/icon/icon-youtube.svg) no-repeat;
   width: 24px;
   height: 24px;
   display: block;
@@ -209,7 +209,7 @@ footer {
 
 .icon_blog {
   font-size: 0;
-  background: url(../../assets/img/common/ic-blog.svg) no-repeat;
+  background: url(../../assets/img/icon/icon-blog.svg) no-repeat;
   width: 24px;
   height: 24px;
   display: block;
@@ -256,7 +256,7 @@ footer {
 }
 
 .info_btn::after {
-  background: url(../../assets/img/common/dropdown.svg) no-repeat;
+  background: url(../../assets/img/icon/icon-dropdown.svg) no-repeat;
   filter: invert(100%);
   content: "";
   width: 12px;

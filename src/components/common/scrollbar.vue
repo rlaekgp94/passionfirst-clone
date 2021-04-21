@@ -1,6 +1,6 @@
 <template></template>
 <style>
-/*scrollbar kustom*/
+/* scrollbar kustom */
 body::-webkit-scrollbar {
   width: 8px;
 }
