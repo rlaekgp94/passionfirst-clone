@@ -1,4 +1,9 @@
 <template></template>
+<script>
+export default {
+  name: "ScrollBar"
+};
+</script>
 <style>
 /* scrollbar kustom */
 body::-webkit-scrollbar {
@@ -16,8 +21,3 @@ body::-webkit-scrollbar-button {
   height: 0;
 }
 </style>
-<script>
-export default {
-  name: "ScrollBar"
-};
-</script>

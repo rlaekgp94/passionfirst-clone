@@ -115,7 +115,7 @@ export default {
 
     //scroll,hover event
     $(window).scroll(function() {
-      var scroll = $(window).scrollTop();
+      let scroll = $(window).scrollTop();
       if (scroll == 0) {
         headerHoverItem.removeClass("sub_on");
         headerHoverText.css("color", "#fff");
@@ -189,8 +189,6 @@ export default {
   }
 };
 </script>
-
-<style src="../../assets/css/reset.css"></style>
 <style>
 /* Noto */
 @font-face {

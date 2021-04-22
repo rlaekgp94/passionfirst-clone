@@ -1,5 +1,10 @@
 <template>
   <section id="theColor">
+    <transition name="fade">
+      <FullScreenColor
+        v-if="FullScreenColor === true"
+        @close="colorFullScreenCloseActive"
+    /></transition>
     <div class="thecolor_wrap">
       <h2>Color Inspiration</h2>
       <p>
@@ -17,7 +22,7 @@
         <ul class="thecolor_list_wrap">
           <li class="thecolor_list_inner colorhover_element">
             <div class="thecolor_list_info">
-              <span><ColorPopBtn /></span>
+              <span><ColorPopBtn @child="colorFullScreenActive"/></span>
               <p>Teal Blue</p>
               <i>SH S 5040-B (0153D)</i>
             </div>
@@ -53,16 +58,37 @@
   <!-- theColor -->
 </template>
 
-<style src="../assets/css/reset.css"></style>
-<style>
-/* Noto */
-@font-face {
-  font-family: "Noto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  src: url("../assets/font/NotoSansKR-Medium.otf");
-}
+<script>
+import ColorPopBtn from "../components/button/ColorPopBtn";
+import FullScreenColor from "../components/popup/FullScreenColor";
+import colorList from "../assets/data/colorList.json";
+export default {
+  name: "MainColor",
+  data() {
+    return {
+      colorList: colorList,
+      FullScreenColor: false,
+      colorCodeCopyListBtn: false
+    };
+  },
+  methods: {
+    colorFullScreenActive: function(val) {
+      console.log(val);
+      this.FullScreenColor = val;
+    },
+    colorFullScreenCloseActive: function(val) {
+      console.log(val);
+      this.FullScreenColor = false;
+    }
+  },
+  components: {
+    ColorPopBtn,
+    FullScreenColor
+  }
+};
+</script>
 
+<style>
 #theColor {
   margin-top: 95px; /* 미리보기용 */
   width: 100%;
@@ -211,32 +237,12 @@
   line-height: 30px;
   letter-spacing: -0.5px;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
-<script>
-import ColorPopBtn from "../components/button/ColorPopBtn.vue";
-export default {
-  name: "TheColor",
-  data() {
-    return {
-      fullScreenColorList: ["#005171", "#7e9aaa", "#98b2c6", "#bdc8d2"],
-      fullScreenColorName: [
-        "Teal Blue",
-        "Provence Blue",
-        "Gray Blue",
-        "TWinter Sky"
-      ],
-      fullScreenColorBtn: false,
-      colorCodeCopyList: [
-        "SH S 2020-R90B",
-        "SH S 3020-B (0088D)",
-        "SH S 2020-R90B (0087C)",
-        "SH S 1510-R90B (0087B)"
-      ],
-      colorCodeCopyListBtn: false
-    };
-  },
-  components: {
-    ColorPopBtn
-  }
-};
-</script>

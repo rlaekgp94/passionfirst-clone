@@ -111,8 +111,6 @@ export default {
   }
 };
 </script>
-
-<style src="../../assets/css/reset.css"></style>
 <style>
 @font-face {
   font-family: "Graphie";

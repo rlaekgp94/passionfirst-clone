@@ -1,10 +1,34 @@
 <template>
   <div class="color_pop_btnwrap">
     <button type="button" class="color_popbtn color_copy"></button>
-    <button type="button" class="color_popbtn color_fullScreen"></button>
+    <button
+      type="button"
+      class="color_popbtn color_fullScreen"
+      @click="$emit('child', true)"
+    ></button>
   </div>
 </template>
-<style>
+<script>
+import $ from "jquery";
+export default {
+  name: "ColorPopBtn",
+  mounted() {
+    let popBtnAll = $(".color_pop_btnwrap"),
+      popBtn = $(".color_popbtn");
+
+    popBtnAll.hide();
+    $(".colorhover_element").hover(
+      function() {
+        popBtnAll.show();
+      },
+      function() {
+        popBtnAll.hide();
+      }
+    );
+  }
+};
+</script>
+<style scoped>
 /* color_popbtn */
 
 .color_pop_btnwrap {
@@ -79,24 +103,3 @@
   }
 }
 </style>
-
-<script>
-import $ from "jquery";
-export default {
-  name: "ColorPopBtn",
-  mounted() {
-    let popBtnAll = $(".color_pop_btnwrap"),
-      popBtn = $(".color_popbtn");
-
-    popBtnAll.hide();
-    $(".colorhover_element").hover(
-      function() {
-        popBtnAll.show();
-      },
-      function() {
-        popBtnAll.hide();
-      }
-    );
-  }
-};
-</script>

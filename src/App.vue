@@ -1,11 +1,27 @@
 <template>
   <div id="app">
     <Header />
-    <TheColor />
+    <MainColor />
     <Footer />
     <ScrollBar />
   </div>
 </template>
+<script>
+import Header from "./components/common/header.vue";
+import MainColor from "./layout/MainColor.vue";
+import Footer from "./components/common/footer.vue";
+import ScrollBar from "./components/common/scrollbar.vue";
+
+export default {
+  name: "app",
+  components: {
+    Header,
+    MainColor,
+    Footer,
+    ScrollBar
+  }
+};
+</script>
 <style>
 /*미리보기용 css*/
 #app {
@@ -24,19 +40,4 @@ footer {
   padding-top: 280px;
 }
 </style>
-<script>
-import Header from "./components/common/header.vue";
-import TheColor from "./layout/TheColor.vue";
-import Footer from "./components/common/footer.vue";
-import ScrollBar from "./components/common/scrollbar.vue";
-
-export default {
-  name: "app",
-  components: {
-    Header,
-    TheColor,
-    Footer,
-    ScrollBar
-  }
-};
-</script>
+<style src="./assets/css/reset.css"></style>
