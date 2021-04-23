@@ -45,7 +45,6 @@ export default {
   top: 0px;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   position: fixed;
   z-index: 20;
 }

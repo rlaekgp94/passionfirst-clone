@@ -2,6 +2,8 @@
   <div id="app">
     <Header />
     <MainColor />
+    <MainBusiness />
+    <MainBusinessSlide />
     <Footer />
     <ScrollBar />
   </div>
@@ -9,6 +11,8 @@
 <script>
 import Header from "./components/common/header.vue";
 import MainColor from "./layout/MainColor.vue";
+import MainBusiness from "./layout/MainBusiness.vue";
+import MainBusinessSlide from "./layout/MainBusinessSlide.vue";
 import Footer from "./components/common/footer.vue";
 import ScrollBar from "./components/common/scrollbar.vue";
 
@@ -17,6 +21,8 @@ export default {
   components: {
     Header,
     MainColor,
+    MainBusiness,
+    MainBusinessSlide,
     Footer,
     ScrollBar
   }
