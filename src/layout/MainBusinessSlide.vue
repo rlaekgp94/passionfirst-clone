@@ -54,6 +54,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fff;
 }
 .mainbusinessslide_wrap {
   width: 1180px;
@@ -92,6 +93,7 @@ export default {
   text-overflow: ellipsis;
   border-bottom: 1px #e5e5e5 solid;
   font-family: "Noto";
+  cursor: pointer;
 }
 .news_list dt {
   margin-bottom: 20px;
