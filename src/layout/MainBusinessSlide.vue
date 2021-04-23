@@ -1,6 +1,6 @@
 <template>
   <section id="mainBusinessSlide">
-    <div class="mainbusinessslide_wrap">
+    <div class="mainBusinessSlide_wrap">
       <div class="ir_content">
         <h3>IR</h3>
         <iframe
@@ -54,8 +54,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
-.mainbusinessslide_wrap {
+.mainBusinessSlide_wrap {
   width: 1180px;
   height: 780px;
   display: flex;
