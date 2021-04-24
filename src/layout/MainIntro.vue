@@ -119,14 +119,16 @@ export default {
       }
     }
   },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
+  created() {},
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll, { passive: true });
   },
   mounted() {
     let thisComponent = this;
+    window.addEventListener("scroll", this.handleScroll, {
+      passive: true,
+      capture: true
+    });
     //this.mainBannerOffset = $("#mainBannerSearch").offset();
     this.bannerChange(0);
   },
@@ -135,18 +137,20 @@ export default {
       //스크롤에 따른 메인 화면 배너 핸들링
       this.winScroll = window.pageYOffset;
       const thisComponent = this;
-      if (this.winScroll > 10 && this.winTransion === true) {
+      if (this.winScroll > 0 && this.winTransion === true) {
         this.mainBannerHeight = window.document.getElementById(
           "mainBannerText"
         ).clientHeight;
+
         if (this.winNow === 1) {
           window.scrollTo(0, this.mainBannerHeight);
           this.winNow++;
           this.winTransion = false;
+
           setTimeout(function() {
             //연속되는 이동 오류 수정
             thisComponent.winTransion = true;
-          }, 1000);
+          }, 3000);
         } else if (this.winNow === 2) {
           if (this.winScroll < this.mainBannerHeight) {
             window.scrollTo(0, -this.mainBannerHeight);
@@ -159,15 +163,17 @@ export default {
           setTimeout(function() {
             //연속되는 이동 오류 수정
             thisComponent.winTransion = true;
-          }, 1000);
+          }, 3000);
         } else {
           if (this.winScroll < 924) {
             this.winNow--;
             this.winTransion = false;
+
             setTimeout(function() {
               //연속되는 이동 오류 수정
               thisComponent.winTransion = true;
-            }, 1000);
+              document.body.classList.remove("stop-scrolling");
+            }, 3000);
           }
         }
       }
@@ -249,7 +255,7 @@ export default {
   width: 1400px;
   height: auto;
   background: transparent;
-  border: solid red 1px;
+
   margin: 0 auto;
   z-index: 2;
 }
@@ -258,7 +264,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  border: solid green 1px;
 }
 #mainBannerText #mainBannerTextItems {
   position: relative;
@@ -297,30 +302,6 @@ export default {
   padding-top: 200px;
   vertical-align: top;
 }
-/* a-style button-style*/
-a {
-  color: #fff;
-  text-decoration: none;
-  outline: none;
-}
-a:hover,
-a:active {
-  text-decoration: none;
-  color: #fff;
-}
-button {
-  background: inherit;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-  overflow: visible;
-  cursor: pointer;
-}
-button:focus {
-  border: none;
-  outline: none;
-}
 /* bannerNation */
 #bannerNationDots {
   position: absolute;
@@ -353,7 +334,6 @@ button:focus {
   padding-top: 428px;
   width: 100%;
   height: 652px;
-  border: pink solid 1px;
 }
 #mainBannerSearchContainer {
   position: relative;

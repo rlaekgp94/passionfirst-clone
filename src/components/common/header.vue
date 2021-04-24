@@ -112,19 +112,18 @@ export default {
 
     //하위메뉴 숨기기
     gnbSub.hide();
-
+    let scroll = $(window).scrollTop();
     //scroll,hover event
     $(window).scroll(function() {
-      let scroll = $(window).scrollTop();
       if (scroll == 0) {
+        console.log(scroll);
         headerHoverItem.removeClass("sub_on");
         headerHoverText.css("color", "#fff");
         langBtn.removeClass("invert").css("color", "#fff");
         gnb.hover(
           function() {
-            $(this)
-              .children("ul")
-              .show();
+            console.log("hover");
+            gnb.show();
             gnbSubBg.addClass("sub_on");
             headerHoverItem.addClass("sub_on");
             headerHoverText.css("color", "#000");

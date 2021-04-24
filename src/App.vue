@@ -52,13 +52,35 @@ footer {
     rgba(181, 161, 255, 0.39)
   );
 }
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
 html {
   scroll-behavior: smooth;
+}
+.stop-scrolling {
+  height: 100%;
+}
+
+/* a-style button-style*/
+a {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #fff;
+}
+button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+button:focus {
+  border: none;
+  outline: none;
 }
 </style>
