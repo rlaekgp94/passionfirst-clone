@@ -2,8 +2,10 @@
   <header>
     <div class="gnb_sub_bg"></div>
     <div id="header_wrap">
-      <h1 id="logo"><a href="/">삼화페인트</a></h1>
-      <h1 id="logo_befor">삼화페인트</h1>
+      <div class="logo_wrap">
+        <h1 id="logo"><a href="/">삼화페인트</a></h1>
+        <h1 id="logo_befor">삼화페인트</h1>
+      </div>
       <nav>
         <ul class="gnb_category">
           <li>
@@ -110,34 +112,54 @@ export default {
       langBtn = $(".lang_btn"),
       langList = $(".lang_list");
 
-    //하위메뉴 숨기기
+    //Category hoverOn event
+    function hoverOn(thisGnb) {
+      $(thisGnb)
+        .children("ul")
+        .show();
+      gnbSubBg.addClass("sub_on");
+      headerHoverItem.addClass("sub_on");
+      headerHoverText.css("color", "#000");
+      langBtn.addClass("invert").css("color", "#000");
+    }
+
+    //Category hoverOFF event
+    function hoverOff(thisGnb) {
+      $(thisGnb)
+        .children("ul")
+        .hide();
+      gnbSubBg.removeClass("sub_on");
+      headerHoverItem.removeClass("sub_on");
+      headerHoverText.css("color", "#fff");
+      langBtn.removeClass("invert").css("color", "#fff");
+    }
+
+    //Category 하위메뉴 숨기기
     gnbSub.hide();
 
-    //scroll,hover event
+    //처음 로딩때 hover event
+    gnb.hover(
+      function() {
+        hoverOn(this);
+      },
+      function() {
+        hoverOff(this);
+      }
+    );
+
+    //scroll했을때 hover event
     $(window).scroll(function() {
       let scroll = $(window).scrollTop();
-      if (scroll == 0) {
+      if (scroll === 0) {
         headerHoverItem.removeClass("sub_on");
         headerHoverText.css("color", "#fff");
         langBtn.removeClass("invert").css("color", "#fff");
         gnb.hover(
           function() {
-            $(this)
-              .children("ul")
-              .show();
-            gnbSubBg.addClass("sub_on");
-            headerHoverItem.addClass("sub_on");
-            headerHoverText.css("color", "#000");
-            langBtn.addClass("invert").css("color", "#000");
+            hoverOn(this);
           },
           function() {
-            $(this)
-              .children("ul")
-              .hide();
-            gnbSubBg.removeClass("sub_on");
-            headerHoverItem.removeClass("sub_on");
-            headerHoverText.css("color", "#fff");
-            langBtn.removeClass("invert").css("color", "#fff");
+            hoverOff(this);
           }
         );
       } else {
@@ -164,7 +186,7 @@ export default {
       }
     });
 
-    //하위메뉴 li hover시 hover된 li제외 textcolor 변경
+    //Category 하위메뉴 li hover시 hover된 li제외 textcolor 변경
     gnbSubsub.hover(
       function() {
         gnbSubsub.not($(this)).addClass("on");
@@ -219,7 +241,7 @@ header {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   transition: 0.3s ease-in-out all;
@@ -244,16 +266,22 @@ header {
 }
 
 /*logo*/
+.logo_wrap {
+  display: flex;
+  justify-content: columns;
+  align-items: center;
+  margin-left: 70px;
+  width: 248px;
+  height: 100%;
+}
+
 #logo a {
   width: 90px;
   height: 32px;
   display: block;
   background: url(../../assets/img/logo/logo-white.svg) no-repeat;
   font-size: 0;
-  position: absolute;
-  left: 70px;
-  top: 50%;
-  transform: translateY(-50%);
+  /* left: 70px; */
   transition: 0.3s ease-in-out all;
 }
 
@@ -268,10 +296,7 @@ header {
   height: 72px;
   background: url(../../assets/img/logo/logo-white-befor.svg) no-repeat;
   font-size: 0;
-  position: absolute;
-  left: 160px;
-  top: 50%;
-  transform: translateY(-50%);
+  /* left: 160px; */
   transition: 0.3s ease-in-out all;
 }
 
@@ -284,6 +309,7 @@ nav {
   width: 1590px;
   height: 100%;
   display: flex;
+  justify-content: space-between;
 }
 
 nav .gnb_category {
@@ -292,9 +318,11 @@ nav .gnb_category {
 }
 
 nav .gnb_category > li {
-  padding: 36px 0;
+  /* padding: 36px 0; */
   cursor: pointer;
   line-height: 19px;
+  /* padding: 0 48px; */
+  padding: 36px 48px 0 48px;
 }
 
 nav .gnb_category > li > a {
@@ -302,7 +330,6 @@ nav .gnb_category > li > a {
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 0.5px;
-  margin: 0 48px;
   position: relative;
   font-family: "graphie", sans-serif;
 }
@@ -390,13 +417,10 @@ nav .gnb_category > li:nth-child(6) > ul {
 /*gnb_right*/
 .gnb_right {
   width: 485px;
-  position: absolute;
-  right: 70px;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-right: 70px;
 }
 
 .gnb_right_link {

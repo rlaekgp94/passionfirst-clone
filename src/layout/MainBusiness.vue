@@ -442,6 +442,7 @@ export default {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  background-color: white;
 }
 #mainBusiness h3 {
   font-size: 80px;

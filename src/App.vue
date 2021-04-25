@@ -4,26 +4,23 @@
     <MainColor />
     <MainBusiness />
     <MainBusinessSlide />
+    <TheMain />
     <Footer />
     <ScrollBar />
   </div>
 </template>
+
 <script>
-import Header from "./components/common/header.vue";
-import MainColor from "./layout/MainColor.vue";
-import MainBusiness from "./layout/MainBusiness.vue";
-import MainBusinessSlide from "./layout/MainBusinessSlide.vue";
-import Footer from "./components/common/footer.vue";
-import ScrollBar from "./components/common/scrollbar.vue";
-import TheMain from "./layout/TheMain";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
+import ScrollBar from "@/components/common/Scrollbar";
+
+import TheMain from "@/layout/TheMain";
 
 export default {
   name: "app",
   components: {
     Header,
-    MainColor,
-    MainBusiness,
-    MainBusinessSlide,
     Footer,
     ScrollBar,
     TheMain
@@ -49,3 +46,40 @@ footer {
 }
 </style>
 <style src="./assets/css/reset.css"></style>
+<style>
+/*미리보기용 css*/
+#app {
+  position: relative;
+}
+html {
+  scroll-behavior: smooth;
+}
+.stop-scrolling {
+  height: 100%;
+}
+
+/* a-style button-style*/
+a {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #fff;
+}
+button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+button:focus {
+  border: none;
+  outline: none;
+}
+</style>

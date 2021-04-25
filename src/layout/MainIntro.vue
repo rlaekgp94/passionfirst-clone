@@ -1,22 +1,19 @@
 <template>
   <div id="mainIntro">
-    <ul id="mainBanner">
-      <li class="banner-items ">
-        <img
-          src="https://www.samhwa.com/files/banner/1610934845726_banner_3-min.jpg"
-        />
-      </li>
-      <li class="banner-items fade-in-active">
-        <img
-          src="https://www.samhwa.com/files/banner/1614317261744_[Final]%EC%95%88%EC%8B%AC%EB%8B%A5%ED%84%B0%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EB%B0%B0%EB%84%88_byleM.jpg"
-        />
-      </li>
-      <li class="banner-items fade-in-active">
-        <img
-          src="https://www.samhwa.com/files/banner/1610935038284_banner_2-min.jpg"
-        />
-      </li>
-    </ul>
+    <div id="mainBanner">
+      <div
+        class="banner-items"
+        style="background-image: URL(https://www.samhwa.com/files/banner/1610934845726_banner_3-min.jpg);"
+      />
+      <div
+        class="banner-items fade-in-active"
+        style="background-image: URL(https://www.samhwa.com/files/banner/1614317261744_[Final]%EC%95%88%EC%8B%AC%EB%8B%A5%ED%84%B0%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EB%B0%B0%EB%84%88_byleM.jpg);"
+      />
+      <div
+        class="banner-items fade-in-active"
+        style="background-image: URL(https://www.samhwa.com/files/banner/1610935038284_banner_2-min.jpg);"
+      />
+    </div>
     <div id="mainBannerShow">
       <div id="mainBannerText">
         <ul id="mainBannerTextItems">
@@ -77,7 +74,7 @@ export default {
       intervalFunction: "",
       mounseScrollVal: 0,
       winScroll: "",
-      mainBannerOffset: "",
+      mainBannerHeight: "",
       winNow: 1,
       winTransion: true
     };
@@ -122,35 +119,41 @@ export default {
       }
     }
   },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
+  created() {},
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll, { passive: true });
   },
   mounted() {
     let thisComponent = this;
-    this.mainBannerOffset = $("#mainBannerSearch").offset();
+    window.addEventListener("scroll", this.handleScroll, {
+      passive: true,
+      capture: true
+    });
+    //this.mainBannerOffset = $("#mainBannerSearch").offset();
     this.bannerChange(0);
   },
   methods: {
     handleScroll(event) {
       //스크롤에 따른 메인 화면 배너 핸들링
-      console.log(this.mainBannerOffset);
       this.winScroll = window.pageYOffset;
       const thisComponent = this;
-      if (this.winScroll > 10 && this.winTransion === true) {
+      if (this.winScroll > 0 && this.winTransion === true) {
+        this.mainBannerHeight = window.document.getElementById(
+          "mainBannerText"
+        ).clientHeight;
+
         if (this.winNow === 1) {
-          window.scrollTo(0, 924);
+          window.scrollTo(0, this.mainBannerHeight);
           this.winNow++;
           this.winTransion = false;
+
           setTimeout(function() {
             //연속되는 이동 오류 수정
             thisComponent.winTransion = true;
-          }, 1000);
+          }, 3000);
         } else if (this.winNow === 2) {
-          if (this.winScroll < 924) {
-            window.scrollTo(0, -924);
+          if (this.winScroll < this.mainBannerHeight) {
+            window.scrollTo(0, -this.mainBannerHeight);
             this.winNow--;
           } else {
             this.winNow++;
@@ -160,15 +163,17 @@ export default {
           setTimeout(function() {
             //연속되는 이동 오류 수정
             thisComponent.winTransion = true;
-          }, 1000);
+          }, 3000);
         } else {
           if (this.winScroll < 924) {
             this.winNow--;
             this.winTransion = false;
+
             setTimeout(function() {
               //연속되는 이동 오류 수정
               thisComponent.winTransion = true;
-            }, 1000);
+              document.body.classList.remove("stop-scrolling");
+            }, 3000);
           }
         }
       }
@@ -214,22 +219,26 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Playfair+Display:wght@400;500&display=swap");
 #mainIntro {
+  position: relative;
   width: 100%;
-  height: 2000px;
+  height: 100%;
   background: white;
 }
 #mainIntro #mainBanner {
-  position: fixed;
-  width: 100%;
-  height: 2000px;
-}
-#mainIntro #mainBanner > li {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
-}
-#mainIntro #mainBanner > li > img {
+  left: 0;
+  top: 0;
   width: 100%;
+  height: 100%;
+}
+#mainIntro #mainBanner > div {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
 }
 
 .banner-items {
@@ -244,8 +253,9 @@ export default {
 #mainBannerShow {
   position: relative;
   width: 1400px;
+  height: auto;
   background: transparent;
-  border: solid red 1px;
+
   margin: 0 auto;
   z-index: 2;
 }
@@ -254,7 +264,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  border: solid green 1px;
 }
 #mainBannerText #mainBannerTextItems {
   position: relative;
@@ -264,12 +273,7 @@ export default {
   width: 100vw;
   height: 100vh;
 }
-#mainBannerSearch {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  border: pink solid 1px;
-}
+
 /* text Items */
 .banner-text-title {
   padding-top: 400px;
@@ -298,30 +302,6 @@ export default {
   padding-top: 200px;
   vertical-align: top;
 }
-/* a-style button-style*/
-a {
-  color: #fff;
-  text-decoration: none;
-  outline: none;
-}
-a:hover,
-a:active {
-  text-decoration: none;
-  color: #fff;
-}
-button {
-  background: inherit;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-  overflow: visible;
-  cursor: pointer;
-}
-button:focus {
-  border: none;
-  outline: none;
-}
 /* bannerNation */
 #bannerNationDots {
   position: absolute;
@@ -349,11 +329,16 @@ button:focus {
   background-color: white;
   border-radius: 50%;
 }
+#mainBannerSearch {
+  position: relative;
+  padding-top: 428px;
+  width: 100%;
+  height: 652px;
+}
 #mainBannerSearchContainer {
-  position: absolute;
-  top: 50%;
+  position: relative;
+
   left: 40px;
-  transform: translateY(-50%);
   color: white;
   font-family: "Noto Sans KR";
 }
