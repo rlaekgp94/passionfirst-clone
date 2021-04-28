@@ -1,10 +1,5 @@
 <template>
   <section id="mainColor">
-    <transition name="fade">
-      <FullScreenColor
-        v-if="FullScreenColor === true"
-        @close="colorFullScreenCloseActive"
-    /></transition>
     <div class="maincolor_wrap">
       <h2>Color Inspiration</h2>
       <p>
@@ -15,38 +10,17 @@
         <a href="#"
           ><img
             src="../assets\img\thumbnail/maincolor-img.jpg"
-            alt="maincolorimg"/></a
-        ><!-- 후에 a태그에 color서브페이지 연결 -->
-        <a href="#" class="maincolor_find">Find a Store</a
-        ><!-- a태그 비워둠표시 customer서브페이지 연결 -->
+            alt="maincolorimg"
+        /></a>
+        <a href="#" class="maincolor_find">Find a Store</a>
         <ul class="maincolor_list_wrap">
-          <li class="maincolor_list_inner colorhover_element">
-            <div class="maincolor_list_info">
-              <span><ColorPopBtn @child="colorFullScreenActive"/></span>
-              <p>Teal Blue</p>
-              <i>SH S 5040-B (0153D)</i>
-            </div>
-          </li>
-          <li class="maincolor_list_inner colorhover_element">
-            <div class="maincolor_list_info">
-              <span><ColorPopBtn /></span>
-              <p>Provence Blue</p>
-              <i>SH S 3020-B (0088D)</i>
-            </div>
-          </li>
-          <li class="maincolor_list_inner colorhover_element">
-            <div class="maincolor_list_info">
-              <span><ColorPopBtn /></span>
-              <p>Gray Blue</p>
-              <i>SH S 2020-R90B (0087C)</i>
-            </div>
-          </li>
-          <li class="maincolor_list_inner colorhover_element">
-            <div class="maincolor_list_info">
-              <span><ColorPopBtn /></span>
-              <p>TWinter Sky</p>
-              <i>SH S 1510-R90B (0087B)</i>
-            </div>
+          <li
+            v-for="(item, index) in colorItems"
+            :key="index"
+            class="colorhover_element maincolor_list_inner"
+          >
+            <!-- 2] 자식 컴포넌트로 list에서 받아온 순차적으로 item을 넘김 -->
+            <VmainColorCard :color="item" :index="index" />
           </li>
         </ul>
         <!-- maincolor_list -->
@@ -59,38 +33,27 @@
 </template>
 
 <script>
-import ColorPopBtn from "../components/button/ColorPopBtn";
-import FullScreenColor from "../components/popup/FullScreenColor";
-import colorList from "../assets/data/colorList.json";
+import VmainColorCard from "@/components/VmainColorCard";
+import axios from "axios";
+
 export default {
-  name: "MainColor",
   data() {
     return {
-      colorList: colorList,
-      FullScreenColor: false,
-      colorCodeCopyListBtn: false
+      colorItems: null
     };
   },
-  methods: {
-    colorFullScreenActive: function(val) {
-      console.log(val);
-      this.FullScreenColor = val;
-    },
-    colorFullScreenCloseActive: function(val) {
-      console.log(val);
-      this.FullScreenColor = false;
-    }
-  },
-  watch: {
-    popUnScroll: function(val) {
-      if ("colorFullScreenActive") {
-        this.unScroll = val;
-      }
-    }
+  mounted() {
+    axios
+      .get("http://localhost:8080/static/color.json")
+      .then(res => {
+        this.colorItems = res.data.color;
+      })
+      .catch(err => {
+        console.log("에러내용 : " + err);
+      });
   },
   components: {
-    ColorPopBtn,
-    FullScreenColor
+    VmainColorCard
   }
 };
 </script>
@@ -98,7 +61,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap");
 #mainColor {
-  margin-top: 95px; /* 미리보기용 */
+  margin-top: 95px;
   width: 100%;
   height: 2032px;
   background: url(../assets/img/background/maincolor-bg.jpg) no-repeat center /
@@ -170,7 +133,7 @@ export default {
 
 /* maincolor_list */
 .maincolor_list_wrap {
-  width: 700px;
+  width: 640px;
   height: 913px;
   position: absolute;
   top: 200px;
@@ -190,7 +153,7 @@ export default {
 .maincolor_list_inner:nth-child(2) {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -60px;
 }
 
 .maincolor_list_inner:nth-child(3) {
@@ -200,59 +163,6 @@ export default {
 .maincolor_list_inner:nth-child(4) {
   position: absolute;
   top: 426px;
-  right: 0;
-}
-
-.maincolor_list_info {
-  width: 282px;
-  height: 358px;
-  background: #fff;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 4px;
-}
-
-.maincolor_list_info span {
-  width: 282px;
-  height: 272px;
-  display: block;
-  position: relative;
-}
-
-.maincolor_list_inner:first-child span {
-  background: #005171;
-}
-.maincolor_list_inner:nth-child(2) span {
-  background: #7e9aaa;
-}
-.maincolor_list_inner:nth-child(3) span {
-  background: #98b2c6;
-}
-.maincolor_list_inner:nth-child(4) span {
-  background: #bdc8d2;
-}
-
-.maincolor_list_info p {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 12px 12px 0;
-  line-height: 30px;
-}
-.maincolor_list_info i {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 100;
-  padding: 4px 12px 20px;
-  line-height: 30px;
-  letter-spacing: -0.5px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+  right: -60px;
 }
 </style>

@@ -30,7 +30,7 @@ export default {
   props: ["color"],
   methods: {
     search: function() {
-      this.thisColor = "Color//" + this.color;
+      this.thisColor = "Color" + this.color;
     }
   }
   /////////////////////////////////////////////
