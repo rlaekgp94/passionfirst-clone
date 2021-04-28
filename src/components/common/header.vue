@@ -112,15 +112,27 @@ export default {
       langBtn = $(".lang_btn"),
       langList = $(".lang_list");
 
+    //HoverOnInvert
+    function hoverOnInvert() {
+      headerHoverItem.addClass("sub_on");
+      headerHoverText.css("color", "#000");
+      langBtn.addClass("invert").css("color", "#000");
+    }
+
+    //HoverOffInvert
+    function hoverOffInvert() {
+      headerHoverItem.removeClass("sub_on");
+      headerHoverText.css("color", "#fff");
+      langBtn.removeClass("invert").css("color", "#fff");
+    }
+
     //Category hoverOn event
     function hoverOn(thisGnb) {
       $(thisGnb)
         .children("ul")
         .show();
       gnbSubBg.addClass("sub_on");
-      headerHoverItem.addClass("sub_on");
-      headerHoverText.css("color", "#000");
-      langBtn.addClass("invert").css("color", "#000");
+      hoverOnInvert();
     }
 
     //Category hoverOFF event
@@ -129,9 +141,7 @@ export default {
         .children("ul")
         .hide();
       gnbSubBg.removeClass("sub_on");
-      headerHoverItem.removeClass("sub_on");
-      headerHoverText.css("color", "#fff");
-      langBtn.removeClass("invert").css("color", "#fff");
+      hoverOffInvert();
     }
 
     //Category 하위메뉴 숨기기
@@ -151,9 +161,7 @@ export default {
     $(window).scroll(function() {
       let scroll = $(window).scrollTop();
       if (scroll === 0) {
-        headerHoverItem.removeClass("sub_on");
-        headerHoverText.css("color", "#fff");
-        langBtn.removeClass("invert").css("color", "#fff");
+        hoverOffInvert();
         gnb.hover(
           function() {
             hoverOn(this);
@@ -163,9 +171,7 @@ export default {
           }
         );
       } else {
-        headerHoverItem.addClass("sub_on");
-        headerHoverText.css("color", "#000");
-        langBtn.addClass("invert").css("color", "#000");
+        hoverOnInvert();
         gnb.hover(
           function() {
             $(this)
@@ -178,9 +184,7 @@ export default {
               .children("ul")
               .hide();
             gnbSubBg.removeClass("sub_on");
-            headerHoverItem.addClass("sub_on");
-            headerHoverText.css("color", "#000");
-            langBtn.addClass("invert").css("color", "#000");
+            hoverOnInvert();
           }
         );
       }

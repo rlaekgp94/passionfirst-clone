@@ -12,15 +12,18 @@
 import $ from "jquery";
 export default {
   mounted() {
-    $(".color_pop_btnwrap").hide();
-    $(".colorhover_element").hover(
+    let btn = $(".color_pop_btnwrap"),
+      btnele = $(".colorhover_element");
+
+    btn.hide();
+    btnele.hover(
       function() {
-        let index = $(".colorhover_element").index(this);
-        $(".color_pop_btnwrap:eq(" + index + ")").show();
+        let index = btnele.index(this);
+        btn.eq(index).show();
       },
       function() {
-        let index = $(".colorhover_element").index(this);
-        $(".color_pop_btnwrap:eq(" + index + ")").hide();
+        let index = btnele.index(this);
+        btn.eq(index).hide();
       }
     );
   }

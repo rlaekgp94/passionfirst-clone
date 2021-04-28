@@ -319,114 +319,100 @@ import $ from "jquery";
 export default {
   name: "MainBusiness",
   mounted() {
-    let slider_next = $(".slider_next"),
-      slider_prev = $(".slider_prev"),
-      zoomOutSlide_list_wrap = $(".mainbusiness_slider01"),
-      zoomOutSlide_list_wrap2 = $(".mainbusiness_slider02"),
-      zoomOutSlide_list_wrap3 = $(".mainbusiness_slider03"),
-      zoomOutSlide_list = $(".mainbusiness_slider01 li"),
-      zoomOutSlide_list2 = $(".mainbusiness_slider02 li");
+    let next = $(".slider_next"),
+      prev = $(".slider_prev"),
+      slide01 = $(".mainbusiness_slider01"),
+      slide02 = $(".mainbusiness_slider02"),
+      slide03 = $(".mainbusiness_slider03"),
+      list01 = $(".mainbusiness_slider01 li"),
+      list02 = $(".mainbusiness_slider02 li"),
+      list03 = $(".mainbusiness_slider03 li");
 
-    var slidewidth = 580 * zoomOutSlide_list.length + "px"; //580*li 개수
-    zoomOutSlide_list_wrap.css("width", slidewidth); //580*14 = 8120px//alert(slidewidth);
-    $(".mainbusiness_slider01 li:last").prependTo(zoomOutSlide_list_wrap); //마지막 li를 맨앞으로 이동
-    zoomOutSlide_list_wrap.css("margin-left", "-580px");
+    //슬라이드 580*li 개수 늘리기
+    let slidewidth = 580 * list01.length + "px",
+      slidewidth2 = 480 * list02.length + "px",
+      slidewidth3 = 480 * list03.length + "px";
 
-    var slidewidth2 = 480 * zoomOutSlide_list2.length + "px"; //480*li 개수
-    zoomOutSlide_list_wrap2.css("width", slidewidth); //480*14
-    $(".mainbusiness_slider02 li:last").prependTo(zoomOutSlide_list_wrap2); //마지막 li를 맨앞으로 이동
-    zoomOutSlide_list_wrap2.css("margin-left", "-480px");
+    slide01.css("width", slidewidth);
+    list01.last().prependTo(slide01);
+    slide01.css("margin-left", "-580px");
 
-    var slidewidth3 = 480 * zoomOutSlide_list2.length + "px"; //480*li 개수
-    zoomOutSlide_list_wrap3.css("width", slidewidth); //480*14
-    $(".mainbusiness_slider03 li:last").prependTo(zoomOutSlide_list_wrap3); //마지막 li를 맨앞으로 이동
-    zoomOutSlide_list_wrap3.css("margin-left", "-480px");
+    slide02.css("width", slidewidth2);
+    list02.last().prependTo(slide02);
+    slide02.css("margin-left", "-480px");
 
-    slider_next.click(function() {
-      $(".mainbusiness_slider01:not(:animated)").animate(
+    slide03.css("width", slidewidth3);
+    list03.last().prependTo(slide03);
+    slide03.css("margin-left", "-480px");
+
+    next.click(function() {
+      slide01.filter(":not(:animated)").animate(
         {
-          marginLeft:
-            parseInt(zoomOutSlide_list_wrap.css("margin-left")) - 580 + "px"
+          marginLeft: parseInt(slide01.css("margin-left")) - 580 + "px"
         },
         "slow",
         "swing",
         function() {
-          $(".mainbusiness_slider01 li:first").appendTo(zoomOutSlide_list_wrap); //맨앞 li를 맨뒤로 이동
-          zoomOutSlide_list_wrap.css("margin-left", "-580px");
+          $(".mainbusiness_slider01 li:first").appendTo(slide01);
+          slide01.css("margin-left", "-580px");
         }
       );
-      $(".mainbusiness_slider02:not(:animated)").animate(
+      slide02.filter(":not(:animated)").animate(
         {
-          marginLeft:
-            parseInt(zoomOutSlide_list_wrap2.css("margin-left")) - 480 + "px"
+          marginLeft: parseInt(slide02.css("margin-left")) - 480 + "px"
         },
         "slow",
         "swing",
         function() {
-          $(".mainbusiness_slider02 li:first").appendTo(
-            zoomOutSlide_list_wrap2
-          ); //맨앞 li를 맨뒤로 이동
-          zoomOutSlide_list_wrap2.css("margin-left", "-480px");
+          $(".mainbusiness_slider02 li:first").appendTo(slide02);
+          slide02.css("margin-left", "-480px");
         }
       );
-      $(".mainbusiness_slider03:not(:animated)").animate(
+      slide03.filter(":not(:animated)").animate(
         {
-          marginLeft:
-            parseInt(zoomOutSlide_list_wrap3.css("margin-left")) - 480 + "px"
+          marginLeft: parseInt(slide03.css("margin-left")) - 480 + "px"
         },
         "slow",
         "swing",
         function() {
-          $(".mainbusiness_slider03 li:first").appendTo(
-            zoomOutSlide_list_wrap3
-          ); //맨앞 li를 맨뒤로 이동
-          zoomOutSlide_list_wrap3.css("margin-left", "-480px");
+          $(".mainbusiness_slider03 li:first").appendTo(slide03);
+          slide03.css("margin-left", "-480px");
         }
       );
     });
 
-    slider_prev.click(function() {
-      /////1번 ul
-      $(".mainbusiness_slider01:not(:animated)").animate(
+    prev.click(function() {
+      slide01.filter(":not(:animated)").animate(
         {
-          marginLeft:
-            parseInt(zoomOutSlide_list_wrap.css("margin-left")) + 580 + "px"
+          marginLeft: parseInt(slide01.css("margin-left")) + 580 + "px"
         },
         "slow",
         "swing",
         function() {
-          $(".mainbusiness_slider01 li:last").prependTo(zoomOutSlide_list_wrap); //맨앞 li를 맨뒤로 이동
-          zoomOutSlide_list_wrap.css("margin-left", "-580px");
+          $(".mainbusiness_slider01 li:last").prependTo(slide01);
+          slide01.css("margin-left", "-580px");
         }
       );
-      /////2번 ul
-      $(".mainbusiness_slider02:not(:animated)").animate(
+      slide02.filter(":not(:animated)").animate(
         {
-          marginLeft:
-            parseInt(zoomOutSlide_list_wrap2.css("margin-left")) + 480 + "px"
+          marginLeft: parseInt(slide02.css("margin-left")) + 480 + "px"
         },
         "slow",
         "swing",
         function() {
-          $(".mainbusiness_slider02 li:last").prependTo(
-            zoomOutSlide_list_wrap2
-          ); //맨앞 li를 맨뒤로 이동
-          zoomOutSlide_list_wrap2.css("margin-left", "-480px");
+          $(".mainbusiness_slider02 li:last").prependTo(slide02);
+          slide02.css("margin-left", "-480px");
         }
       );
-      /////3번 ul
-      $(".mainbusiness_slider03:not(:animated)").animate(
+      slide03.filter(":not(:animated)").animate(
         {
-          marginLeft:
-            parseInt(zoomOutSlide_list_wrap3.css("margin-left")) + 480 + "px"
+          marginLeft: parseInt(slide03.css("margin-left")) + 480 + "px"
         },
         "slow",
         "swing",
         function() {
-          $(".mainbusiness_slider03 li:last").prependTo(
-            zoomOutSlide_list_wrap3
-          ); //맨앞 li를 맨뒤로 이동
-          zoomOutSlide_list_wrap3.css("margin-left", "-480px");
+          $(".mainbusiness_slider03 li:last").prependTo(slide03);
+          slide03.css("margin-left", "-480px");
         }
       );
     });
