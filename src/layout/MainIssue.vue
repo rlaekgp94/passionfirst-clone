@@ -24,7 +24,7 @@
             :class="item.class"
             :key="index"
           >
-            <VmainIssueList :color="item.class" />
+            <VmainIssueList :issueListData="item" />
           </li>
         </ul>
       </div>
@@ -33,7 +33,9 @@
 </template>
 <script>
 import VmainIssueList from "@/components/VmainIssueList";
+import productList from "@/assets/data/issueList.json";
 import $ from "jquery";
+
 export default {
   name: "MainIssue",
   setup() {},
@@ -44,16 +46,7 @@ export default {
       hotIssueTextBottom: "",
       opacityVal: 1,
       temp: 0,
-      issueItems: [
-        { class: "sns-item" },
-        { class: "sns-item" },
-        { class: "sns-item" },
-        4,
-        { class: "five-item" },
-        6,
-        7,
-        8
-      ]
+      issueItems: productList
     };
   },
   components: {
@@ -61,6 +54,11 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+
+    // axios.get("/data/product.json").then(function(response) {
+    //   // handle success
+    //   console.log(response);
+    // });
   },
   methods: {
     handleScroll: function() {
@@ -81,7 +79,7 @@ export default {
       }
 
       this.winScroll = window.pageYOffset;
-      console.log(this.opacityVal);
+      //console.log(this.opacityVal);
       this.hotIssueTextBottom = $(".section-title").offset();
       let mainColorTop = document.getElementById("mainColor").offsetTop;
 
@@ -95,7 +93,7 @@ export default {
           "position: fixed; top: 80px; left: 50%; margin-left: -590px;";
         this.fixedActive = false;
 
-        console.log("change fixed");
+        //console.log("change fixed");
       } else if (this.winScroll < this.hotIssueTextBottom.top + 140) {
         document.getElementsByClassName("side-magazine")[0].style = "";
       } else {
@@ -113,7 +111,6 @@ export default {
   background-color: white;
   padding-top: 140px;
   padding-bottom: 30px;
-
   width: 100%;
   height: auto;
 }
@@ -130,23 +127,26 @@ export default {
 }
 .inner ul {
   position: relative;
+  display: block;
   padding-left: 180px;
   height: 2884px;
   width: 1000px;
 }
-.inner ul > li {
+li {
   width: 400px;
-  padding-left: 100px;
-  margin-bottom: 140px;
-  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 80px;
   cursor: pointer;
+  display: block;
   color: black;
 }
-
-li:nth-of-type(2n) {
-  margin-top: -80px;
+li:nth-of-type(odd) {
+  float: left;
+}
+li:nth-of-type(even) {
   float: right;
 }
+
 /* 카테고리별 li 스타일 */
 .inner ul > li.sns-youtube {
 }

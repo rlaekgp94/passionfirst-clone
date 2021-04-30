@@ -1,39 +1,29 @@
 <template>
-  <a href="https://youtu.be/ohg6s-QtIZ8" id="mainIssueList">
+  <a :href="issueList.url" id="mainIssueList">
     <div class="img-wrap">
-      <img
-        class="issue-image"
-        :src="
-          'https://www.samhwa.com/files/hotissue/1615421733695_KakaoTalk_20210310_151546842.png'
-        "
-      />
-      <i class="issue-cate">Brand News</i>
+      <img class="issue-image" :src="issueList.thumbnail" />
+      <i class="issue-cate">{{ issueList.showCategory }}</i>
     </div>
     <strong class="issue-title">
-      {{ thisColor }}<br />
-      Freak & FRIENDS
+      {{ issueList.title }}
     </strong>
     <p class="Issue-text">
-      Two tone Live 3월의 주인공 릴보이, 시고도 달콤한 풋사과같은 삶에, 꽃길이
-      가득이길 바라는 꿈을 담은 이달의 컬러
+      {{ issueList.subTitle }}
     </p>
   </a>
 </template>
 <script>
 export default {
-  //////////////////////////////////
   data() {
-    return {
-      thisColor: ""
-    };
+    return {};
   },
-  props: ["color"],
-  methods: {
-    search: function() {
-      this.thisColor = "Color//" + this.color;
+  computed: {
+    issueList: function() {
+      return this.issueListData;
     }
-  }
-  /////////////////////////////////////////////
+  },
+  props: ["issueListData"],
+  methods: {}
 };
 </script>
 <style scoped>

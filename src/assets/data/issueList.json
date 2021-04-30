@@ -1,0 +1,74 @@
+[
+  {
+    "issueId": "1",
+    "title": "투톤라이브 ep3. 릴보이<br/>Freak & FRIENDS",
+    "subTitle": "[Samhwa X lIlBOI] 투톤라이브 3월의 주인공 릴보이, 시고도 달콤한 풋사과같은 삶에, 꽃길이 가득이길 바라는 꿈을 담은 이달의 컬러 풋사과연두색🍏 X 푸른꿈색📘",
+    "url": "https://www.youtube.com/watch?v=ohg6s-QtIZ8",
+    "category": "youtube",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1615421733695_KakaoTalk_20210310_151546842.png",
+    "showCategory": "BrandNews"
+  },
+  {
+    "issueId": "2",
+    "title": "3월의 색 #풋사과연두색 #푸른꿈색",
+    "subTitle": "추운 겨울을 보내고, 싱그럽고, 푸른 생기의 물이 오르는 3월의 대표색은 보기만 해도 싱그러운 #풋사과연두색과 새 꿈, 새 희망의 기운이 느껴지는 #푸른꿈색입니다",
+    "url": "https://samhwa.com/culture/storyView/442?limit=9",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1615421416224_%ED%92%8B%EC%82%AC%EA%B3%BC%EC%97%B0%EB%91%90%EC%83%89_%EC%A0%95%EB%B0%A9%ED%96%A5.png",
+    "category": "stroyView",
+    "showCategory": "BrandNews"
+  },
+  {
+    "issueId": "3",
+    "title": "투톤라이브 ep2. 스텔라장-빌런😈",
+    "subTitle": "2월의 주인공 스텔라 장, 유쾌하고도 발랄한 노란 달꽃 뒤에, 고혹적인 빌런이 숨어있는 삼화페인트 2월 컬러",
+    "url": "https://youtu.be/1ZAbli2mD9c",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1613470364749_210210____________.png",
+    "category": "youtube",
+    "showCategory": "BrandNews"
+  },
+  {
+    "issueId": "4",
+    "title": "2월의 색 #귀한자수정색 #노란달꽃색",
+    "subTitle": "다가오는 봄을 시샘하며, 추위가 심술을 부리는 2월의 대표 색은 환한 보름달의 달무리를 닮은 #노란달꽃색과 볼수록 품위가 느껴지는 #귀한자수정색입니다.",
+    "url": "https://samhwa.com/culture/storyView/439?limit=9",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1613528909719_0209_%EC%9D%B8%EC%8A%A4%ED%83%80_%EC%9D%B4%EB%8B%AC%EC%9D%98%EC%83%89_%EB%B3%B4%EB%9D%BC.png",
+    "category": "stroyView",
+    "showCategory": "BrandNews"
+  },
+  {
+    "issueId": "5",
+    "title": "EP.01 페인트 오픈하기",
+    "subTitle": "페인트 오픈방법부터 V컷 페인팅이라는 꿀팁까지!<br>셀프페인팅의 첫 발걸음 시작해볼까요?",
+    "url": "https://samhwa.com/product/guide/indiv/104",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1611729291123_1%EC%8D%B8%ED%95%84.png",
+    "category": "productGuide",
+    "showCategory": "Painting Guide"
+  },
+  {
+    "issueId": "6",
+    "title": "항바이러스 페인트 ‘안심닥터’ 추천",
+    "subTitle": "항바이러스 원료 함유, 바이러스 99.9% 사멸…1월5일 대리점 출시 CGV 강남, 인천시청, 해썹인증 공장, 어린이 이용시설 등 적용 완료",
+    "url": "https://www.samhwa.com/culture/newsView/328?limit=9",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1609721288227_1.jpg",
+    "category": "newsView",
+    "showCategory": "Brand News"
+  },
+  {
+    "issueId": "7",
+    "title": "생활방수, 이지클리닝 기능을 더한 올 뉴 아이럭스",
+    "subTitle": "실내 벽면/벽지용, 방문/가구용, 실내외 겸영 고채도 하이크로마 3종",
+    "url": "https://www.samhwa.com/product/search/3051831",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1608821389890_img-issue-03.jpg",
+    "category": "product",
+    "showCategory": "Brand News"
+  },
+  {
+    "issueId": "8",
+    "title": "반려동물인증 받은 펫 러브 컬러와 펫테리어 추천",
+    "subTitle": "모든 집사들의 가장 큰 고민. 반려견과 반려묘가 머물기 좋은 최상의 공간 만드는 방법",
+    "url": "https://www.samhwa.com/product/guide/indiv/101",
+    "thumbnail": "https://www.samhwa.com/files/hotissue/1608821418392_img-issue-06.jpg",
+    "category": "productGuide",
+    "showCategory": "Pet & Life"
+  }
+]

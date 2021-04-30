@@ -1,7 +1,7 @@
 <template>
   <input
     v-bind:value="value"
-    placeholder="제품, 컬러, 데리점 검색"
+    placeholder="제품, 컬러, 대리점 검색"
     v-on:input="updateInput"
   />
 </template>

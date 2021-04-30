@@ -1,5 +1,5 @@
 <template>
-  <div id="mainIntro">
+  <div v-on:scroll="handleScroll()" id="mainIntro">
     <div id="mainBanner">
       <div
         class="banner-items"
@@ -73,7 +73,7 @@ export default {
       intervalMounted: false,
       intervalFunction: "",
       mounseScrollVal: 0,
-      winScroll: "",
+      winScroll: 0,
       mainBannerHeight: "",
       winNow: 1,
       winTransion: true
@@ -88,29 +88,29 @@ export default {
       handler() {
         for (let i = 0; i < 3; i++) {
           if (this.fadeInItem[i] === false) {
-            document //배너 텍스트 이동
+            document
               .getElementsByClassName("banner-items")
               [i + 3].classList.remove("fade-in-active");
 
-            document //배너 이미지 이동
+            document
               .getElementsByClassName("banner-items")
               [i].classList.remove("fade-in-active");
 
-            document //배너 네비게이션 이동
+            document
               .getElementById("bannerNationDots")
               .querySelectorAll("i")
               [i].classList.remove("active");
           }
           if (this.fadeInItem[i] === true) {
-            document
+            document //배너 텍스트 이동
               .getElementsByClassName("banner-items")
               [i + 3].classList.add("fade-in-active");
 
-            document
+            document //배너 이미지 이동
               .getElementsByClassName("banner-items")
               [i].classList.add("fade-in-active");
 
-            document
+            document //배너 네비게이션 이동
               .getElementById("bannerNationDots")
               .querySelectorAll("i")
               [i].classList.add("active");
@@ -121,62 +121,61 @@ export default {
   },
   created() {},
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll, { passive: true });
+    //window.removeEventListener("scroll", this.handleScroll);
   },
   mounted() {
     let thisComponent = this;
-    window.addEventListener("scroll", this.handleScroll, {
-      passive: true,
-      capture: true
-    });
-    //this.mainBannerOffset = $("#mainBannerSearch").offset();
+    window.addEventListener(
+      "wheel",
+      function(e) {
+        thisComponent.handleScroll(e);
+      },
+      { passive: false }
+    );
+    //$(window).on("mousewheel DOMMouseScroll",
     this.bannerChange(0);
   },
   methods: {
-    handleScroll(event) {
+    handleScroll(e) {
       //스크롤에 따른 메인 화면 배너 핸들링
       this.winScroll = window.pageYOffset;
-      const thisComponent = this;
-      if (this.winScroll > 0 && this.winTransion === true) {
-        this.mainBannerHeight = window.document.getElementById(
-          "mainBannerText"
-        ).clientHeight;
 
+      if (this.winScroll >= 0 && this.winTransion == true) {
         if (this.winNow === 1) {
           window.scrollTo(0, this.mainBannerHeight);
+          e.preventDefault();
           this.winNow++;
           this.winTransion = false;
-
-          setTimeout(function() {
-            //연속되는 이동 오류 수정
-            thisComponent.winTransion = true;
-          }, 3000);
+          this.scrollAciveOn();
         } else if (this.winNow === 2) {
+          this.mainBannerHeight = window.document.getElementById(
+            "mainBannerText"
+          ).clientHeight;
+          e.preventDefault();
           if (this.winScroll < this.mainBannerHeight) {
             window.scrollTo(0, -this.mainBannerHeight);
             this.winNow--;
           } else {
             this.winNow++;
           }
-
           this.winTransion = false;
-          setTimeout(function() {
-            //연속되는 이동 오류 수정
-            thisComponent.winTransion = true;
-          }, 3000);
+          this.scrollAciveOn();
         } else {
           if (this.winScroll < 924) {
             this.winNow--;
             this.winTransion = false;
 
-            setTimeout(function() {
-              //연속되는 이동 오류 수정
-              thisComponent.winTransion = true;
-              document.body.classList.remove("stop-scrolling");
-            }, 3000);
+            this.scrollAciveOn();
           }
         }
       }
+    },
+    scrollAciveOn: function() {
+      setTimeout(function() {
+        //연속되는 이동 오류 수정
+        this.winScroll = window.pageYOffset;
+        this.winTransion = true;
+      }, 3000);
     },
     bannerTrans: function(nowData) {
       for (let i = 0; i < this.fadeInItem.length; i++) {
