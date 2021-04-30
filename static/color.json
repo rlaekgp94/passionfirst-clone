@@ -1,0 +1,32 @@
+{
+  "color": [
+    {
+      "colorName": "Teal Blue",
+      "colorCode": "SH S 5040-B (0153D)",
+      "colorRgbCode": "#005171",
+      "id": "1",
+      "class": "sns-item"
+    },
+    {
+      "colorName": "Provence Blue",
+      "colorCode": "SH S 3020-B (0088D)",
+      "colorRgbCode": "#7e9aaa",
+      "id": "1",
+      "class": "sns-item"
+    },
+    {
+      "colorName": "Gray Blue",
+      "colorCode": "SH S 2020-R90B (0087C)",
+      "colorRgbCode": "#98b2c6",
+      "id": "2",
+      "class": "sns-item"
+    },
+    {
+      "colorName": "TWinter Sky",
+      "colorCode": "SH S 1510-R90B (0087B)",
+      "colorRgbCode": "#bdc8d2",
+      "id": "3",
+      "class": "sns-item"
+    }
+  ]
+}

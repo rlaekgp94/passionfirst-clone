@@ -11,18 +11,19 @@
 <script>
 import $ from "jquery";
 export default {
-  name: "ColorPopBtn",
   mounted() {
-    let popBtnAll = $(".color_pop_btnwrap"),
-      popBtn = $(".color_popbtn");
+    let btn = $(".color_pop_btnwrap"),
+      btnele = $(".colorhover_element");
 
-    popBtnAll.hide();
-    $(".colorhover_element").hover(
+    btn.hide();
+    btnele.hover(
       function() {
-        popBtnAll.show();
+        let index = btnele.index(this);
+        btn.eq(index).show();
       },
       function() {
-        popBtnAll.hide();
+        let index = btnele.index(this);
+        btn.eq(index).hide();
       }
     );
   }
@@ -35,6 +36,7 @@ export default {
   position: absolute;
   bottom: 15px;
   right: 15px;
+  z-index: 5;
 }
 
 .color_popbtn {

@@ -1,16 +1,16 @@
 <template>
   <div class="color_fullscreen_wrap">
     <ul class="color_fullscreen">
-      <li class="color_background">colorlist</li>
-      <!-- color_background -->
-
+      <li class="color_background" :style="{ background: color.colorRgbCode }">
+        color background
+      </li>
       <li class="color_info_wrap">
         <ul class="color_info">
           <li class="color_name">
-            <p>Teal Blue</p>
-            <span>SH S 5040-B (0153D)</span>
+            <p>{{ color.colorName }}</p>
+            <span>{{ color.colorCode }}</span>
           </li>
-          <!-- color_name -->
+
           <li>
             <div class="color_infobtn">
               <button type="button" class="infobtn_copy">
@@ -37,12 +37,15 @@
 </template>
 <script>
 export default {
-  name: "FullScreenColor"
+  props: {
+    color: Object
+  }
 };
 </script>
 <style scoped>
 .color_fullscreen_wrap {
   top: 0px;
+  left: 0;
   width: 100%;
   height: 100vh;
   position: fixed;
