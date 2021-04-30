@@ -216,14 +216,6 @@ export default {
 };
 </script>
 <style>
-/* Noto */
-@font-face {
-  font-family: "Noto";
-  font-style: normal;
-  font-weight: 500;
-  src: url("../../assets/font/NotoSansKR-Medium.otf");
-}
-
 /*z-index 아직 미설정*/
 header {
   width: 100%;
@@ -232,7 +224,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  font-family: "Noto", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   z-index: 10;
 }
 

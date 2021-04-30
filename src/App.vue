@@ -25,7 +25,10 @@ export default {
 };
 </script>
 <style src="./assets/css/reset.css"></style>
+
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Playfair+Display:wght@400;500&display=swap");
 /*미리보기용 css*/
 #app {
   position: relative;

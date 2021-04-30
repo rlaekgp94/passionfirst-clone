@@ -34,23 +34,24 @@
 
 <script>
 import VmainColorCard from "@/components/VmainColorCard";
+import colorList from "@/assets/data/color.json";
 import axios from "axios";
 
 export default {
   data() {
     return {
-      colorItems: null
+      colorItems: colorList.color
     };
   },
   mounted() {
-    axios
-      .get("http://localhost:8080/static/color.json")
-      .then(res => {
-        this.colorItems = res.data.color;
-      })
-      .catch(err => {
-        console.log("에러내용 : " + err);
-      });
+    // axios
+    //   .get("http://localhost:8080/static/color.json")
+    //   .then(res => {
+    //     this.colorItems = res.data.color;
+    //   })
+    //   .catch(err => {
+    //     console.log("에러내용 : " + err);
+    //   });
   },
   components: {
     VmainColorCard
@@ -67,7 +68,7 @@ export default {
   background: url(../assets/img/background/maincolor-bg.jpg) no-repeat center /
     cover;
   background-attachment: fixed;
-  font-family: "Noto", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

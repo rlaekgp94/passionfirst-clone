@@ -112,22 +112,7 @@ export default {
 };
 </script>
 <style>
-@font-face {
-  font-family: "Graphie";
-  src: url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.eot");
-  src: url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.eot?#iefix")
-      format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.woff2")
-      format("woff2"),
-    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.woff")
-      format("woff"),
-    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.ttf")
-      format("truetype"),
-    url("//db.onlinewebfonts.com/t/1e269e62f5396901be29908d52c60927.svg#Graphie")
-      format("svg");
-}
-
-footer {
+#footer {
   width: 100%;
   height: 280px;
   background: #fafafa;
