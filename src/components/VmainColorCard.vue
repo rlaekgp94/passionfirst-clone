@@ -38,10 +38,12 @@ export default {
   methods: {
     colorFullScreenActive: function(val) {
       this.FullScreenColor = val;
+      document.querySelector("body").style.overflow = "hidden";
     },
     colorFullScreenCloseActive: function(val) {
       $(".color_pop_btnwrap").hide();
       this.FullScreenColor = false;
+      document.querySelector("body").style.overflow = "visible ";
     }
   },
   components: {
